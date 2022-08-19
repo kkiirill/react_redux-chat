@@ -1,0 +1,78 @@
+.new-chat {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: white;
+  width: 100%;
+  max-width: 600px;
+  border-right: 1px solid rgb(207, 207, 207);
+  z-index: 10;
+  transition: all 0.5s ease;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 15 15 15px;
+    background-color: rgb(124, 216, 255);
+    height: 140px;
+    width: 100%;
+  }
+
+  &__title {
+    flex: 1;
+    font-size: 20px;
+    line-height: 40px;
+    font-weight: bold;
+    color: #fff;
+    margin-left: 15px;
+  }
+
+  &__button {
+    padding-left: 20px;
+    cursor: pointer;
+  }
+
+  &__image {
+    width: 35px;
+    height: 35px;
+  }
+
+  &__list {
+    overflow-y: auto;
+    flex: 1;
+  }
+
+  &__list-item {
+    display: flex;
+    align-items: center;
+    height: 70px;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    overflow: hidden;
+  
+    &:hover {
+      background-color: rgb(238, 238, 238);
+    }
+  }
+  &__item-name {
+    color: rgb(47, 47, 47);
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+    padding-left: 10px;
+  }
+
+}
+.new-chat__list::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.new-chat__list::-webkit-scrollbar-thumb {
+  background-color: (0, 0, 0, 0.2);
+}

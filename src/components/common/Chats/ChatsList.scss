@@ -1,0 +1,25 @@
+.chats-list {
+  height: 100%;
+  background: rgb(248, 248, 248);
+  overflow-y: auto;
+  &__title {
+    margin: 20px 0 40px;
+    color: rgb(108, 189, 255);
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+  }
+}
+
+.chats-list::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.chats-list::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3);
+}
