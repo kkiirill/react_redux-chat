@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+React-Redux chat
+
+This is not a test version, the project is still in development
+
+[DEMO](https://kkiirill.github.io/react_redux-chat/)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
