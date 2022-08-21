@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/react_redux-chat/static/css/main.e05a74d5.css",
+    "main.js": "/react_redux-chat/static/js/main.613bc816.js",
+    "static/media/start-chat.jpg": "/react_redux-chat/static/media/start-chat.18237ae0ec4732b65962.jpg",
+    "static/media/send.png": "/react_redux-chat/static/media/send.80ae188c60ec8a5458ca.png",
+    "static/media/user.png": "/react_redux-chat/static/media/user.5faf09a7795d28bf5a2b.png",
+    "static/media/close.png": "/react_redux-chat/static/media/close.5d07d5fec43074868a45.png",
+    "static/media/emoji.png": "/react_redux-chat/static/media/emoji.1c6b653132098ed68527.png",
+    "static/media/logout.png": "/react_redux-chat/static/media/logout.6799a5697484c429ebd6.png",
+    "static/media/message.png": "/react_redux-chat/static/media/message.1e54691e345b9b5973e3.png",
+    "static/media/online-status.png": "/react_redux-chat/static/media/online-status.00a30d1223fc3e8de3ec.png",
+    "static/media/search.png": "/react_redux-chat/static/media/search.f2d70afd1ebdca42594e.png",
+    "static/media/back.png": "/react_redux-chat/static/media/back.1a7f0a2e3ac0a9cb6f5e.png",
+    "index.html": "/react_redux-chat/index.html",
+    "main.e05a74d5.css.map": "/react_redux-chat/static/css/main.e05a74d5.css.map",
+    "main.613bc816.js.map": "/react_redux-chat/static/js/main.613bc816.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e05a74d5.css",
+    "static/js/main.613bc816.js"
+  ]
+}
