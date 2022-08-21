@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-
 const initialState: any = {
-  list: [{id: 1, name: 'Miky Tyson', message: 'Hi whatsssupp?', image: require('../../images/test-user2.png')}, {id: 2, name: 'Nic Tesla', message: 'Are you here?', image: require('../../images/test-user2.png')}, {id: 3,name: 'Steave Jobs', message: 'Where is my money?', image: require('../../images/test-user2.png')}],
-  newList: [{id: 1,name: 'Steave Jobs', image: require('../../images/test-user2.png')},{id: 2,name: 'Steave Jobs', image: require('../../images/test-user2.png')},{id: 3,name: 'Steave Jobs', image: require('../../images/test-user2.png')}],
+  list: null,
+  modifiedList: [],
+  contactsList: null,
   showChat: false,
-  activeList: null,
+  activeList: {},
 };
 
 export const chatstListReducer = createSlice({
@@ -13,18 +13,30 @@ export const chatstListReducer = createSlice({
   initialState,
   reducers: {
     setChatsList(state, action: PayloadAction<any>) {
-      state.list.push({
-        id: Math.random,
-        title: action.payload.text,
-      })
+      state.list = action.payload;
+      state.modifiedList = action.payload;
+    },
+    setContactsChatsList(state, action: PayloadAction<any>) {
+      state.contactsList = action.payload;
     },
     setActiveList(state, action: PayloadAction<any>) {
-      state.activeList = action.payload.id
+      state.activeList = action.payload;
     },
     setShowNewChat(state, action: PayloadAction<any>) {
-      state.showChat = action.payload
+      state.showChat = action.payload;
+    },
+    setModifiedList(state, action: PayloadAction<any>) {
+      state.modifiedList = [...state.list].filter((item: { title: string; }) => {
+        return item.title.toLowerCase().includes(action.payload.toLowerCase());
+      })
     }
   },
 });
 
-export const { setChatsList, setActiveList, setShowNewChat} = chatstListReducer.actions;
+export const {
+  setChatsList,
+  setActiveList,
+  setShowNewChat,
+  setContactsChatsList,
+  setModifiedList
+} = chatstListReducer.actions;

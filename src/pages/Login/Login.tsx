@@ -1,32 +1,37 @@
 import "./Login.scss";
 import { googlePopup } from "../../api/api";
-import { useAppDispatch, useAppSelector } from "../../store";
+import { useAppDispatch } from "../../store";
 import { setUser } from "../../store/slices/userSlice";
 import { useNavigate } from "react-router-dom";
-export default function Login() {
+import { memo } from "react";
+
+export const Login: React.FC = memo(() => {
   const dispatch = useAppDispatch();
-  const user = useAppSelector((state) => state.user);
   const navigate = useNavigate();
   const handleLogin = async () => {
     try {
       const response = await googlePopup();
+
       dispatch(
         setUser({
-          email: response?.user.email,
-          fullName: response?.user.displayName,
-          photoURL: response?.user.photoURL,
-          id: response?.user.uid,
+          email: response.user?.email,
+          name: response.user?.displayName,
+          image: response.user?.photoURL,
+          id: response.user?.uid,
         })
       );
       navigate("/");
-      
     } catch (err) {
       console.log(err);
     }
   };
   return (
     <div className="login">
-      <button onClick={handleLogin}>Login</button>
+      <div className="login__container">
+        <button className="loginBtn loginBtn--google" onClick={handleLogin}>
+          Login with Google
+        </button>
+      </div>
     </div>
   );
-}
+});

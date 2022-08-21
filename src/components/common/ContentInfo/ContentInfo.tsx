@@ -1,30 +1,56 @@
 import "./ContentInfo.scss";
 import { IconUser } from "../../UI/Icon/IconUser";
-import Messages from "../Messages/Messages";
-import EmojiPicker, { IEmojiData } from "emoji-picker-react";
-import { MouseEvent, useEffect, useState } from "react";
+import { Messages } from "../Messages/Messages";
+import EmojiPicker from "emoji-picker-react";
+import { KeyboardEvent, memo, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../store";
-import { addMessage } from "../../../store/slices/messagesSlice";
+import { setMessages } from "../../../store/slices/messagesSlice";
+import { db, sendMessage } from "../../../api/api";
+import { setUsers } from "../../../store/slices/userSlice";
 
-export default function ContentInfo() {
-  const messageText = useAppSelector((state) => state.messages.text);
+export const ContentInfo: React.FC = memo(() => {
+  const activeChat = useAppSelector((state) => state.chats.activeList);
+  const user = useAppSelector((state) => state.user);
+  const users = useAppSelector((state) => state.user.users);
   const [emojiShow, setEmojiShow] = useState<boolean>(false);
   const [search, setSearch] = useState<string>("");
   const dispatch = useAppDispatch();
+  useEffect(() => {
+    return db
+      .collection("chats")
+      .doc(activeChat?.chatId)
+      .onSnapshot((doc: { exists: any; data: () => any }) => {
+        if (doc.exists) {
+          const data = doc.data();
+
+          if (data?.messages) {
+            dispatch(setMessages(data.messages));
+            dispatch(setUsers(data.users));
+          }
+        }
+      });
+  }, [activeChat.chatId]);
   const handleEmoji = (e: any, emojiObj: { emoji: any }) => {
     setSearch(search + emojiObj.emoji);
   };
 
-  useEffect(() => {
-
-  }, [])
-
-  console.log(messageText);
+  const handleKeyUp = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.keyCode === 13) {
+      handleSend();
+    }
+  };
+  const handleSend = () => {
+    if (search !== "") {
+      sendMessage(activeChat, user.id, "text", search, users);
+      setSearch("");
+      setEmojiShow(false);
+    }
+  };
   return (
     <div className="content-info">
       <div className="content-info__header">
-        <IconUser img={""} />
-        <p className="content-info__name">Miky Tyson</p>
+        <IconUser img={activeChat.image} />
+        <p className="content-info__name">{activeChat?.title}</p>
       </div>
       <main className="content-info__main">
         <Messages />
@@ -65,6 +91,7 @@ export default function ContentInfo() {
             placeholder="Type your message"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
+            onKeyUp={(e) => handleKeyUp(e)}
             className="content-info__search"
           />
 
@@ -73,10 +100,11 @@ export default function ContentInfo() {
               src={require("../../../images/send.png")}
               alt="send"
               className="send"
+              onClick={handleSend}
             />
           </div>
         </div>
       </div>
     </div>
   );
-}
+});

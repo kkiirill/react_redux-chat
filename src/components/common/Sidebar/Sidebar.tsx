@@ -1,13 +1,14 @@
-import Chats from "../Chats/ChatsList";
+import { memo } from "react";
+import { ChatsList } from "../Chats/ChatsList";
 import { Header } from "../Header/Header";
-import{ NewChat} from "../NewChat/NewChat";
+import { NewChat } from "../NewChat/NewChat";
 import "./Sidebar.scss";
-export default function Sidebar() {
+export const Sidebar: React.FC = memo(() => {
   return (
     <div className="sidebar-container">
       <NewChat />
       <Header />
-      <Chats />
+      <ChatsList />
     </div>
   );
-}
+});

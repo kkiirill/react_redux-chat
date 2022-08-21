@@ -1,14 +1,15 @@
 import "./Content.scss";
 import { useAppSelector } from "../../../store";
-import ContentInfo from "../ContentInfo/ContentInfo";
+import {ContentInfo }from "../ContentInfo/ContentInfo";
 import ContentStart from "../ContentStart/ContentStart";
+import { memo } from "react";
 
-export default function Content() {
+export const Content: React.FC = memo(() => {
   const activeListId = useAppSelector((state) => state.chats.activeList);
-  console.log(activeListId);
+
   return (
     <div className="content-container">
       {activeListId ? <ContentInfo /> : <ContentStart />}
     </div>
   );
-}
+})

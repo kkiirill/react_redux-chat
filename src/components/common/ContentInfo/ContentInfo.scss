@@ -38,6 +38,11 @@
   &__emoji {
     display: flex;
     padding-right: 5px;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
   &__input {
@@ -63,6 +68,10 @@
     top: 20%;
     right: 2%;
     cursor: pointer;
+    
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 }
 

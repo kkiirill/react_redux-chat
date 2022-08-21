@@ -12,8 +12,13 @@
   &__icon-message {
     width: 30px;
     height: 30px;
+    margin-left: 10px;
     border-radius: 100%;
     cursor: pointer;
+    
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
   &__search {

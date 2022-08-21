@@ -2,29 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: any = {
   text: "",
-  list: [
-    { author: 123, text: 'hello man' },
-    { author: 123,text: 'whaaasttttttt man'},
-    { author: 1234,text: 'goooooooooodddddddddd news man'},
-    { author: 123, text: 'hello man' },
-    { author: 123,text: 'whaaasttttttt man'},
-    { author: 1234,text: 'goooooooooodddddddddd news man'},
-    { author: 123, text: 'hello man' },
-    { author: 123,text: 'whaaasttttttt man'},
-    { author: 1234,text: 'goooooooooodddddddddd news man'},
-    { author: 123, text: 'hello man' },
-    { author: 123,text: 'whaaasttttttt man'},
-    { author: 1234,text: 'goooooooooodddddddddd news man'},
-    { author: 123, text: 'hello man' },
-    { author: 123,text: 'whaaasttttttt man'},
-    { author: 1234,text: 'goooooooooodddddddddd news man'},
-    { author: 123, text: 'hello man' },
-    { author: 123,text: 'whaaasttttttt man'},
-    { author: 1234,text: 'goooooooooodddddddddd news man'},
-    { author: 123, text: 'hello man' },
-    { author: 123,text: 'whaaasttttttt man'},
-    { author: 1234,text: 'goooooooooodddddddddd news man'},
-  ],
+  list: null,
 };
 
 export const messagesReducer = createSlice({
@@ -34,7 +12,10 @@ export const messagesReducer = createSlice({
     addMessage(state, action: PayloadAction<any>) {
       state.text = action.payload;
     },
+    setMessages(state, action: PayloadAction<any>) {
+      state.list = action.payload;
+    }
   },
 });
 
-export const { addMessage } = messagesReducer.actions;
+export const { addMessage, setMessages } = messagesReducer.actions;
